@@ -2,7 +2,7 @@ const express = require('express');
 const chalk = require('chalk');
 const app = express();
 const path = require('path');
-const uuid = require('uuid/v4');
+const logger = require('morgan');
 
 const users = require('./models/Users');
 // const { logMe } = require('./middleware/logger');
@@ -16,8 +16,13 @@ const userRoutes = require('./routes/userRoutes');
 // app.use(logMe);
 // app.use(myMoment);
 // app.use(express.static(path.join(__dirname, 'public')));
+
+//used for collecting info in .post route
+app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+//connect default path to the userRoutes in routes folder
 app.use('/api/users', userRoutes);
 
 //! Routes
