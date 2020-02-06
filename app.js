@@ -10,11 +10,10 @@ const users = require('./models/Users');
 
 const port = process.env.PORT || 3000;
 
+// import userRoutes file from routes folder
 const userRoutes = require('./routes/userRoutes');
 
 //! Middleware: a function we create, will need app.use()
-// app.use(logMe);
-// app.use(myMoment);
 // app.use(express.static(path.join(__dirname, 'public')));
 
 //used for collecting info in .post route
@@ -34,6 +33,7 @@ app.get('/', (req, res) => {
     res.send('hello express');
 });
 
+//! Server
 app.listen(port, () =>
     console.log(chalk.blueBright(`App listening on ${port}`))
 );
